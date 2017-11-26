@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby "2.2.2"
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -45,3 +46,6 @@ group :development do
   gem 'spring'
 end
 
+gem 'haml-rails'
+gem 'bootstrap-sass', '~>3.3.6'
+gem 'modernizr-rails'
