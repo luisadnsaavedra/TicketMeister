@@ -20,5 +20,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  app_title: Title
-  app_description: Description
+  app_title: TicketMeister
+  app_description: A place to find and purchase tickets to all the music related events happening in your area.
+
+  home:
+    home:
+      title: TicketMeister
+      intro: Here you can find and purchase tickets to all the music related events happening near you.
