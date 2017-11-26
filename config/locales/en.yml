@@ -27,3 +27,7 @@ en:
     home:
       title: TicketMeister
       intro: Here you can find and purchase tickets to all the music related events happening near you.
+
+    contact:
+      title: Contact Us
+      contact_us: Complete the following form to get in touch with us.
