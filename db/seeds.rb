@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+welcomeConcert = Concert.where(title: 'Welcome').first
+welcomeConcert.delete if welcomeConcert
+
+concerts = Concert.create([title: 'Welcome', description: 'example of a concert or event in no theater or date in particular'])
