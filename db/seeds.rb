@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-theater = Theater.where(title: 'Royal Default Theater').first
-theater.delete if defaultTheater
+defaultTheater = Theater.where(title: 'Royal Default Theater').first
+defaultTheater.delete if defaultTheater
 
 theaters = Theater.create([title: 'Royal Default Theater', description: 'example of a theater whithout any theaters, seats, etc.'])
