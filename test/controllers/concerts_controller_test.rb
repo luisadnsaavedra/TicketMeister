@@ -18,7 +18,7 @@ class ConcertsControllerTest < ActionController::TestCase
 
   test "should create concert" do
     assert_difference('Concert.count') do
-      post :create, concert: { description: @concert.description, title: @concert.title }
+      post :create, concert: { description: @concert.description, title: @concert.title + " create" }
     end
 
     assert_redirected_to concert_path(assigns(:concert))
