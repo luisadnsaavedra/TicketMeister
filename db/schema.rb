@@ -11,15 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171128143620) do
+ActiveRecord::Schema.define(version: 20171128165306) do
 
-  create_table "concerts", force: :cascade do |t|
+  create_table "theaters", force: :cascade do |t|
     t.string   "title",       null: false
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
-
-  add_index "concerts", ["title"], name: "index_concerts_on_title", unique: true
 
 end

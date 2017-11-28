@@ -1,5 +1,5 @@
-class AddIndexToConcerts < ActiveRecord::Migration
+class AddIndexToTheaters < ActiveRecord::Migration
   def change
-    add_index :concerts, :title, unique: true
+    add_index :theaters, :title, unique: true
   end
 end

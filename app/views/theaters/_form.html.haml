@@ -1,9 +1,9 @@
-= form_for @concert do |f|
-  - if @concert.errors.any?
+= form_for @theater do |f|
+  - if @theater.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@concert.errors.count, "error")} prohibited this concert from being saved:"
+      %h2= "#{pluralize(@theater.errors.count, "error")} prohibited this theater from being saved:"
       %ul
-        - @concert.errors.full_messages.each do |message|
+        - @theater.errors.full_messages.each do |message|
           %li= message
 
   .field

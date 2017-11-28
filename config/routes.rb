@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :concerts
+  resources :theaters
+  resources :theaters
   get 'home/home'
 
   # The priority is based upon order of creation: first created -> highest priority.

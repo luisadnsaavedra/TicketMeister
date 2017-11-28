@@ -1,4 +1,4 @@
-class Concert < ActiveRecord::Base
+class Theater < ActiveRecord::Base
 
   validates :title, presence: true
   validates :title, uniqueness: true
