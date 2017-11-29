@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :seats
+  devise_for :users
   resources :concerts
   resources :theaters
   #get 'home/home'

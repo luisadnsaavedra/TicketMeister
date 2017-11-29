@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Concert:
+  = @seat.concert
+%p
+  %b Row:
+  = @seat.row
+%p
+  %b Number:
+  = @seat.number
+
+= link_to 'Edit', edit_seat_path(@seat)
+\|
+= link_to 'Back', seats_path
