@@ -2,13 +2,15 @@
   - if @concert.errors.any?
     #error_explanation
       %h2= "#{pluralize(@concert.errors.count, "error")} prohibited this concert from being saved:"
+      //TODO: localise string
       %ul
         - @concert.errors.full_messages.each do |message|
           %li= message
 
   .field
     = f.label :theater
-    = f.text_field :theater
+    %p= @concert.theater.title
+    = f.hidden_field :theater_id, value: @concert.theater.id
   .field
     = f.label :title
     = f.text_field :title

@@ -3,6 +3,7 @@ require 'test_helper'
 class ConcertsControllerTest < ActionController::TestCase
   setup do
     @concert = concerts(:one)
+    @theater = theaters(:one)
   end
 
   test "should get index" do
@@ -12,13 +13,13 @@ class ConcertsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new
+    get :new, theater_id: @theater
     assert_response :success
   end
 
   test "should create concert" do
     assert_difference('Concert.count') do
-      post :create, concert: { theater_id: @concert.theater_id, title: @concert.title }
+      post :create, concert: { theater_id: @theater, title: @concert.title }
     end
 
     assert_redirected_to concert_path(assigns(:concert))
@@ -35,7 +36,7 @@ class ConcertsControllerTest < ActionController::TestCase
   end
 
   test "should update concert" do
-    patch :update, id: @concert, concert: { theater_id: @concert.theater_id, title: @concert.title }
+    patch :update, id: @concert, concert: { theater_id: @theater, title: @concert.title }
     assert_redirected_to concert_path(assigns(:concert))
   end
 

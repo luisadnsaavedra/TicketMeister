@@ -1,6 +1,6 @@
 class ConcertsController < ApplicationController
   before_action :set_concert, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_theater, only: [:new, :create]
   # GET /concerts
   # GET /concerts.json
   def index
@@ -14,7 +14,7 @@ class ConcertsController < ApplicationController
 
   # GET /concerts/new
   def new
-    @concert = Concert.new
+    @concert = @theater.concerts.new
   end
 
   # GET /concerts/1/edit
@@ -24,11 +24,12 @@ class ConcertsController < ApplicationController
   # POST /concerts
   # POST /concerts.json
   def create
-    @concert = Concert.new(concert_params)
+    @concert = @theater.concerts.new(concert_params)
 
     respond_to do |format|
       if @concert.save
         format.html { redirect_to @concert, notice: 'Concert was successfully created.' }
+        #TODO localise the previous string
         format.json { render :show, status: :created, location: @concert }
       else
         format.html { render :new }
@@ -43,6 +44,7 @@ class ConcertsController < ApplicationController
     respond_to do |format|
       if @concert.update(concert_params)
         format.html { redirect_to @concert, notice: 'Concert was successfully updated.' }
+        #TODO: localise the previous string
         format.json { render :show, status: :ok, location: @concert }
       else
         format.html { render :edit }
@@ -62,13 +64,18 @@ class ConcertsController < ApplicationController
   end
 
   private
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def concert_params
+      params.require(:concert).permit(:theater_id, :title)
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_concert
       @concert = Concert.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def concert_params
-      params.require(:concert).permit(:theater_id, :title)
+    def set_theater
+      @theater = Theater.find_by(id: params[:theater_id]) || Theater.find(concert_params[:theater_id])
     end
+    
 end

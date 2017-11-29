@@ -12,7 +12,7 @@
   %tbody
     - @concerts.each do |concert|
       %tr
-        %td= concert.theater
+        %td= concert.theater.title
         %td= concert.title
         %td= link_to 'Show', concert
         %td= link_to 'Edit', edit_concert_path(concert)
