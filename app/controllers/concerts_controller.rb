@@ -59,6 +59,7 @@ class ConcertsController < ApplicationController
     @concert.destroy
     respond_to do |format|
       format.html { redirect_to concerts_url, notice: 'Concert was successfully destroyed.' }
+      format.js {flash[:notice] = 'Concert was succesfully destroyed.'}
       format.json { head :no_content }
     end
   end
@@ -77,5 +78,5 @@ class ConcertsController < ApplicationController
     def set_theater
       @theater = Theater.find_by(id: params[:theater_id]) || Theater.find(concert_params[:theater_id])
     end
-    
+
 end
