@@ -7,6 +7,17 @@
   %b Description:
   = @theater.description
 
+%p Concerts and Events:
+%table
+  %tbody
+    - @theater.concerts.each do |concert|
+      %tr
+        %td= concert.title
+        %td= link_to 'Show', concert
+        %td= link_to 'Edit', edit_concert_path(concert)
+        %td= link_to 'Destroy', concert, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        //TODO: localise string
+
 %p= link_to I18n.t('home.theaters.add_concert'), new_concert_path(theater_id: @theater)
 = link_to 'Edit', edit_theater_path(@theater)
 \|
