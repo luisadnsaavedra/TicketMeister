@@ -49,3 +49,4 @@ end
 gem 'haml-rails'
 gem 'bootstrap-sass', '~>3.3.6'
 gem 'modernizr-rails'
+gem 'devise'
