@@ -1,5 +1,6 @@
 class SeatsController < ApplicationController
   before_action :set_seat, only: [:show, :edit, :update, :destroy]
+  before_action :set_concert, only: [:new, :create]
 
   # GET /seats
   # GET /seats.json
@@ -14,7 +15,7 @@ class SeatsController < ApplicationController
 
   # GET /seats/new
   def new
-    @seat = Seat.new
+    @seat = @concert.seats.new
   end
 
   # GET /seats/1/edit
@@ -24,7 +25,7 @@ class SeatsController < ApplicationController
   # POST /seats
   # POST /seats.json
   def create
-    @seat = Seat.new(seat_params)
+    @seat = @concert.seats.new(seat_params)
 
     respond_to do |format|
       if @seat.save
@@ -63,12 +64,16 @@ class SeatsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def seat_params
+      params.require(:seat).permit(:concert_id, :row, :number)
+    end
+
     def set_seat
       @seat = Seat.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def seat_params
-      params.require(:seat).permit(:concert_id, :row, :number)
+    def set_concert
+      @concert = Concert.find_by(id: params[:concert_id]) || Concert.find(seat_params[:concert_id])
     end
 end

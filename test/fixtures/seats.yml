@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  concert_id: 
-  row: MyText
+  concert_id: one
+  row: A
   number: 1
 
 two:
-  concert_id: 
-  row: MyText
-  number: 1
+  concert_id: two
+  row: A
+  number: 2

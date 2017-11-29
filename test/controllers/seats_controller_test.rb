@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class SeatsControllerTest < ActionController::TestCase
+
+  include Devise::Test::ControllerHelpers
+  
   setup do
     @seat = seats(:one)
+    @concert = concerts(:one)
   end
 
   test "should get index" do
@@ -10,14 +14,15 @@ class SeatsControllerTest < ActionController::TestCase
     assert_response :success
     assert_not_nil assigns(:seats)
   end
+
   test "should get new" do
-    get :new
+    get :new, concert_id: @concert
     assert_response :success
   end
 
   test "should create seat" do
     assert_difference('Seat.count') do
-      post :create, seat: { concert_id: @seat.concert_id, number: @seat.number, row: @seat.row }
+      post :create, seat: { concert_id: @concert, row: @seat.row, number: @seat.number }
     end
 
     assert_redirected_to seat_path(assigns(:seat))
@@ -34,7 +39,7 @@ class SeatsControllerTest < ActionController::TestCase
   end
 
   test "should update seat" do
-    patch :update, id: @seat, seat: { concert_id: @seat.concert_id, number: @seat.number, row: @seat.row }
+    patch :update, id: @seat, seat: { concert_id: @concert, row: @seat.row, number: @seat.number }
     assert_redirected_to seat_path(assigns(:seat))
   end
 

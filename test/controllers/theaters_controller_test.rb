@@ -1,6 +1,9 @@
 require 'test_helper'
 
 class TheatersControllerTest < ActionController::TestCase
+
+  include Devise::Test::ControllerHelpers
+  
   setup do
     @theater = theaters(:one)
   end
