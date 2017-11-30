@@ -1,3 +1,8 @@
+%link(rail='stylesheet' href='assets/stylesheets/header.scss')
+%ul
+  %li= link_to raw('<strong>Home</strong>'), root_path
+  %li= link_to raw('<strong>Theaters</strong>'), theaters_path
+  %li= link_to raw('<strong>My tickets</strong>')
 %nav
   -if user_signed_in?
     = "#{current_user.email} |"
@@ -8,6 +13,6 @@
     = link_to t('login'), new_user_session_path
     = '|'
     = link_to t('sign_up'), new_user_registration_path
-    
+
 - flash.each do |key, value|
   = content_tag :div, content_tag(:p, value), id: "#{key}" unless value.blank?

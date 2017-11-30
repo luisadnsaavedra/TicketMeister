@@ -1,2 +1,19 @@
 %h1=t('.title')
 %p=t('.intro')
+%h1 The most popular theaters
+
+%table
+  %thead
+    %tr
+      %th Title
+      %th Description
+      %th
+      %th
+      %th
+
+  %tbody
+    - @theaters.each do |theater|
+      %tr
+        %td= theater.title
+        %td= theater.description
+        %td= link_to 'Show', theater
