@@ -1,5 +1,11 @@
 class HomeController < ApplicationController
+  before_action :set_concert, only: [:show]
+
+  def show
+  end
+
   def home
+    @concerts = Concert.all
   end
 
   def contact
@@ -20,6 +26,16 @@ class HomeController < ApplicationController
     end
 
     redirect_to root_path
-  end 
+  end
+
+  private
+
+    def set_concert
+      @concert = Concert.find(params[:id])
+    end
+
+    def concert_params
+      params.require(:concert).permit(:theater_id, :title)
+    end
 
 end

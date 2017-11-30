@@ -1,3 +1,28 @@
 %h1=t('.title')
 %p=t('.intro')
-%h1 The most popular concerts
+
+%h2 The most popular concerts
+
+%table
+  %thead
+    %tr
+      %th Theater
+      %th Title
+      %th
+      %th
+      %th
+
+  %tbody
+    %tr All concerts
+    - @concerts.each do |concert|
+      %tr
+        %td= concert.theater.title
+        %td= concert.title
+        %td= link_to 'Show', concert
+
+    %tr 3 most popular
+    - Concert.order('concerts.impressions_count DESC').limit(3).each do |concert|
+      %tr
+        %td= concert.theater.title
+        %td= concert.title
+        %td= link_to 'Show', concert
