@@ -13,7 +13,7 @@
   %tbody
     - @seats.each do |seat|
       %tr
-        %td= seat.concert
+        %td= seat.concert.title
         %td= seat.row
         %td= seat.number
         %td= link_to 'Show', seat

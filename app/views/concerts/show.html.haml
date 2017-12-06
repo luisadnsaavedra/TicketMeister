@@ -5,6 +5,7 @@
   %b Title:
   = @concert.title
 
+%p= link_to I18n.t('home.theaters.concerts.add_seat'), new_seat_path(concert_id: @concert)
 = link_to 'Edit', edit_concert_path(@concert)
 \|
 = link_to 'Back', concerts_path
