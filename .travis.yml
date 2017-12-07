@@ -1,9 +1,8 @@
 language: ruby
 rvm:
   - "2.2.2"
-env:
-  - DB=sqlite3
-script:
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
-  - bundle exec rake db:test:prepare
-  - bundle exec rspec spec/
+gem "sqlite", :platform => [:ruby, :mswin, :mingw]
+test:
+  adapter: sqlite3
+  database: ":memory"
+  timeout: 500
