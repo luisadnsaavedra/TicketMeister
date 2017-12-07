@@ -64,16 +64,18 @@ class SeatsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def seat_params
-      params.require(:seat).permit(:concert_id, :row, :number)
-    end
-
     def set_seat
       @seat = Seat.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
+    def seat_params
+      params.require(:seat).permit(:concert_id, :row, :number, :price)
+    end
+
+    #set the concert by its id
     def set_concert
       @concert = Concert.find_by(id: params[:concert_id]) || Concert.find(seat_params[:concert_id])
     end
+    
 end

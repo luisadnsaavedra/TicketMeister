@@ -4,8 +4,10 @@ one:
   concert: one
   row: A
   number: 1
+  price:
 
 two:
   concert: two
   row: A
   number: 2
+  price:

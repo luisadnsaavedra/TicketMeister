@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171130103630) do
+ActiveRecord::Schema.define(version: 20171207214318) do
 
   create_table "concerts", force: :cascade do |t|
     t.integer  "theater_id",        null: false
@@ -51,9 +51,10 @@ ActiveRecord::Schema.define(version: 20171130103630) do
   add_index "impressions", ["user_id"], name: "index_impressions_on_user_id"
 
   create_table "seats", force: :cascade do |t|
-    t.integer  "concert_id", null: false
-    t.text     "row",        null: false
-    t.integer  "number",     null: false
+    t.integer  "concert_id"
+    t.text     "row"
+    t.integer  "number"
+    t.decimal  "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

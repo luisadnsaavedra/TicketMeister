@@ -3,7 +3,7 @@ require 'test_helper'
 class SeatsControllerTest < ActionController::TestCase
 
   include Devise::Test::ControllerHelpers
-  
+
   setup do
     @seat = seats(:one)
     @concert = concerts(:one)
@@ -22,7 +22,7 @@ class SeatsControllerTest < ActionController::TestCase
 
   test "should create seat" do
     assert_difference('Seat.count') do
-      post :create, seat: { concert_id: @concert, row: @seat.row, number: @seat.number }
+      post :create, seat: { concert_id: @seat.concert_id, number: @seat.number, price: @seat.price, row: @seat.row }
     end
 
     assert_redirected_to seat_path(assigns(:seat))
@@ -39,7 +39,7 @@ class SeatsControllerTest < ActionController::TestCase
   end
 
   test "should update seat" do
-    patch :update, id: @seat, seat: { concert_id: @concert, row: @seat.row, number: @seat.number }
+    patch :update, id: @seat, seat: { concert_id: @seat.concert_id, number: @seat.number, price: @seat.price, row: @seat.row }
     assert_redirected_to seat_path(assigns(:seat))
   end
 
@@ -47,7 +47,7 @@ class SeatsControllerTest < ActionController::TestCase
     assert_difference('Seat.count', -1) do
       delete :destroy, id: @seat
     end
-
     assert_redirected_to seats_path
   end
+  
 end

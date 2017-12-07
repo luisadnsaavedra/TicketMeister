@@ -6,6 +6,7 @@
       %th Concert
       %th Row
       %th Number
+      %th Price
       %th
       %th
       %th
@@ -16,6 +17,7 @@
         %td= seat.concert.title
         %td= seat.row
         %td= seat.number
+        %td= seat.price
         %td= link_to 'Show', seat
         %td= link_to 'Edit', edit_seat_path(seat)
         %td= link_to 'Destroy', seat, method: :delete, data: { confirm: 'Are you sure?' }
