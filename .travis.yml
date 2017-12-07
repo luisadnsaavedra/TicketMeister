@@ -1,7 +1,7 @@
 language: ruby
 rvm:
   - "2.2.2"
-gem "sqlite", :platform => [:ruby, :mswin, :mingw]
+#gem "sqlite", :platform => [:ruby, :mswin, :mingw]
 test:
   adapter: sqlite3
   database: ":memory"
