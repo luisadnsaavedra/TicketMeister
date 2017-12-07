@@ -2,7 +2,11 @@
 %ul
   %li= link_to raw('<strong>Home</strong>'), root_path
   %li= link_to raw('<strong>Theaters</strong>'), theaters_path
-  %li= link_to raw('<strong>My tickets</strong>')
+  %li
+    -if user_signed_in?
+      = link_to raw('<strong>My tickets</strong>'), seats_path
+    -else
+      = link_to raw('<strong>My tickets</strong>'), new_user_session_path
 %nav
   -if user_signed_in?
     = "#{current_user.email} |"
