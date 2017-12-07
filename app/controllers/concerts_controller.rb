@@ -2,7 +2,6 @@ class ConcertsController < ApplicationController
   before_action :set_concert, only: [:show, :edit, :update, :destroy]
   before_action :set_theater, only: [:new, :create]
   impressionist #impressionist gem code
-
   # GET /concerts
   # GET /concerts.json
   def index
