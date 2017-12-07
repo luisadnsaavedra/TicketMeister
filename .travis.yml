@@ -6,3 +6,9 @@ test:
   adapter: sqlite3
   database: ":memory"
   timeout: 500
+
+#add notifications to a Slack team, to a specific Slack room (/ group) on success and fail
+#notifications:
+  #slack: coyeja:LtsKC9LKjClXgPSysDgV6IiG
+
+travis encrypt "coyeja:LtsKC9LKjClXgPSysDgV6IiG" --add notifications.slack
