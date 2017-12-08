@@ -6,6 +6,11 @@ class TheatersControllerTest < ActionController::TestCase
 
   setup do
     @theater = theaters(:one)
+    #set up user and admin user
+    @user = users(:one)
+    @admin_user = users(:admin)
+    #set user to normal user
+    sign_in @user
   end
 
   test "should get index" do
@@ -32,18 +37,18 @@ class TheatersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should not get edit" do
+  test "user should not get edit" do
     get :edit, id: @theater
     assert_response :redirect
     assert_redirected_to theaters_path #must be an admin to edit theater
   end
 
-  test "should not update theater" do
+  test "user should not update theater" do
     patch :update, id: @theater, theater: { description: @theater.description, title: @theater.title }
     assert_redirected_to theaters_path #(assigns(:theater))
   end
 
-  test "should not destroy theater" do
+  test "user should not destroy theater" do
     assert_difference('Theater.count', 0) do
       delete :destroy, id: @theater
     end
@@ -51,5 +56,27 @@ class TheatersControllerTest < ActionController::TestCase
     assert_redirected_to theaters_path
   end
 
-  #test "should destroy theater", test "should update theater", test "should get edit"
+  #Test functionality of the app for the administrator user
+  test "admin should get edit" do
+    #Sign in as the admin
+    sign_in @admin_user
+
+    get :edit, id: @theater
+    assert_response :success
+  end
+
+  test "admin should update theater" do
+    sign_in @admin_user
+    patch :update, id: @theater, theater: { description: @theater.description, title: @theater.title }
+    assert_redirected_to theater_path(assigns(:theater))
+  end
+
+  test "admin should destroy theater" do
+    sign_in @admin_user
+    assert_difference('Theater.count', -1) do
+      delete :destroy, id: @theater
+    end
+
+    assert_redirected_to theaters_path
+  end
 end
