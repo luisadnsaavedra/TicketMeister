@@ -8,6 +8,8 @@ class SeatsControllerTest < ActionController::TestCase
     @seat = seats(:one)
     @concert = concerts(:one)
     #seat view requires a logged in user
+    @user = users(:one)
+    sign_in @user
   end
 
   test "should get index" do

@@ -2,9 +2,12 @@ require 'test_helper'
 
 class TicketsControllerTest < ActionController::TestCase
   include Devise::Test::ControllerHelpers
-  
+
   setup do
     @ticket = tickets(:one)
+    #tickets require a logged in user
+    @user = users(:one)
+    sign_in @user
   end
 
   test "should get index" do
