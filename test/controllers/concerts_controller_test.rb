@@ -3,10 +3,15 @@ require 'test_helper'
 class ConcertsControllerTest < ActionController::TestCase
 
   include Devise::Test::ControllerHelpers
-  
+
   setup do
     @concert = concerts(:one)
     @theater = theaters(:one)
+    #set up user and admin user
+    @user = users(:one)
+    @admin_user = users(:admin)
+    #set user to normal user
+    sign_in @user
   end
 
   test "should get index" do
@@ -33,17 +38,42 @@ class ConcertsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get edit" do
+  test "user should not get edit" do
+    get :edit, id: @concert
+    assert_response :redirect
+    assert_redirected_to concerts_path
+  end
+
+  test "user should not update concert" do
+    patch :update, id: @concert, concert: { theater_id: @theater, title: @concert.title }
+    assert_redirected_to concerts_path
+  end
+
+  test "user should not destroy concert" do
+    assert_difference('Concert.count', 0) do
+      delete :destroy, id: @concert
+    end
+
+    assert_redirected_to concerts_path
+  end
+
+  #Test functionality of the app for admin
+  test "admin should get edit" do
+    #Sign in as the admin
+    sign_in @admin_user
+
     get :edit, id: @concert
     assert_response :success
   end
 
-  test "should update concert" do
+  test "admin should update concert" do
+    sign_in @admin_user
     patch :update, id: @concert, concert: { theater_id: @theater, title: @concert.title }
     assert_redirected_to concert_path(assigns(:concert))
   end
 
-  test "should destroy concert" do
+  test "admin should destroy concert" do
+    sign_in @admin_user
     assert_difference('Concert.count', -1) do
       delete :destroy, id: @concert
     end
