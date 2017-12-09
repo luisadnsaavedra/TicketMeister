@@ -12,12 +12,21 @@
     = f.hidden_field :concert_id, value: @seat.concert.id
   .field
     = f.label :row
-    = f.text_area :row
+    %p= params[:row]
+    = f.hidden_field :row, value: params[:row]
+    //= f.text_area :row
   .field
     = f.label :number
-    = f.number_field :number
+    %p= params[:number]
+    = f.hidden_field :number, value: params[:number]
+    //= f.number_field :number
   .field
     = f.label :price
-    = f.text_field :price
+    %p= params[:price]
+    = f.hidden_field :price, value: params[:price]
+    //= f.text_field :price
   .actions
-    = f.submit 'Save'
+    = f.submit 'Confirm', :on_click => "link_to new_ticket_path(:seat_id => @seat, :user_id => current_user); return false"
+    //, new_ticket_path(seat_id: @seat, user_id: @current_user)
+    //, :remote => true
+    //= link_to 'Confirmlink', ticket, :method => :create, :data => { :confirm => 'Are you sure?' }, :remote => true

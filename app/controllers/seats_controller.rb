@@ -2,7 +2,7 @@ class SeatsController < ApplicationController
   before_action :set_seat, only: [:show, :edit, :update, :destroy]
   before_action :set_concert, only: [:new, :create]
   before_action :authenticate_user!
-  
+
   # GET /seats
   # GET /seats.json
   def index
@@ -30,8 +30,18 @@ class SeatsController < ApplicationController
 
     respond_to do |format|
       if @seat.save
-        format.html { redirect_to @seat, notice: 'Seat was successfully created.' }
-        format.json { render :show, status: :created, location: @seat }
+        #save a new Ticket as a result
+        @ticket = Ticket.new
+        @ticket.user = current_user
+        @ticket.seat = @seat
+        if @ticket.save
+          #TODO: change @seat to @ticket
+          format.html { redirect_to @seat, notice: 'Seat was successfully created.' }
+          format.json { render :show, status: :created, location: @seat }
+        else
+          format.html { render :new }
+          format.json { render json: @ticket.errors, status: :unprocessable_entity }
+        end
       else
         format.html { render :new }
         format.json { render json: @seat.errors, status: :unprocessable_entity }
@@ -78,5 +88,4 @@ class SeatsController < ApplicationController
     def set_concert
       @concert = Concert.find_by(id: params[:concert_id]) || Concert.find(seat_params[:concert_id])
     end
-
 end

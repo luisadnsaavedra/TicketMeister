@@ -1,0 +1,32 @@
+table {
+  border: 20px;
+}
+
+td {
+  font-size: 17px;
+}
+
+body td {
+  padding: 10px;
+}
+
+.occupied {
+  background-color: red;
+}
+
+.available {
+  background-color: green;
+  &#F, &#L, &#M {
+    background-color: blue;
+  }
+}
+
+#G, #H, #I {
+  &.available {
+    background-color: blue;
+  }
+}
+
+h1 {
+  text-transform: capitalize;
+}

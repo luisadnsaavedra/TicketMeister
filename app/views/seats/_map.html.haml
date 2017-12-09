@@ -35,4 +35,11 @@
             -if seatc.row == row && seatc.number == number
               - @class= "occupied"
 
-          %td{:class => "#{@class}"} "#{@class}"
+          //current user and set a Seat object to create the Ticket
+
+          %td{:class => "#{@class}", :id => row }
+            //  = link_to number, seat_path(concert_id: @concert.id, row: row, number: number, price: 15)
+            //- @seat= Seat.new
+            //= link_to number, tickets_path, :on_click => "post :create, seat: { seat: @seat.id concert_id: @concert.id, number: number, row: row, price: 15 }"
+            = link_to number, new_seat_path(:concert_id => @concert, :row => row, :number => number, :price => 15)
+%h1 Stage
