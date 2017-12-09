@@ -1,10 +1,38 @@
 %link(rail='stylesheet' href='assets/stylesheets/seatMap.scss')
-//- @concert = concert
+- @seats = concert.seats
+//TODO: jQuery methods to help format the seats
+//:javascript
+
 %table
   %tbody
-    -concert.seats.each do |seat|
+    - @seats.each do |seat|
       %tr
         %td= seat.row
         %td= seat.number
         %td= seat.price
-%p!= "&copy; #{t('app_title')} #{Time.now.year}"
+
+%table
+  %tbody
+    //Arrays with all the rows per theater and seats per row
+    //We are assuming same number of rows and seats per row for all theaters to simplify the code;
+    //Alternatively, it could be coded so that it can be specified when creating a theater and used here as
+    //@rows = concert.theater.rows and @numbers = concert.theater.numbers
+    - @rows = [*?A..?Z]
+    - @numbers = [*1..30]
+    - @rows.each do |row|
+      %tr
+        %td= row
+        - @numbers.each do |number|
+          //- @currentSeat = Seat.new
+          //- @currentSeat.concert= concert
+          //- @currentSeat.row= row
+          //- @currentSeat.number= number
+          //TODO: set price depending on row
+          //- @currentSeat.price= 0
+
+          - @class= "available"
+          - @seats.each do |seatc|
+            -if seatc.row == row && seatc.number == number
+              - @class= "occupied"
+
+          %td{:class => "#{@class}"} "#{@class}"
