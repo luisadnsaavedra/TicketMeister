@@ -7,6 +7,7 @@ class SeatsControllerTest < ActionController::TestCase
   setup do
     @seat = seats(:one)
     @concert = concerts(:one)
+    #seat view requires a logged in user
   end
 
   test "should get index" do
@@ -49,5 +50,5 @@ class SeatsControllerTest < ActionController::TestCase
     end
     assert_redirected_to seats_path
   end
-  
+
 end

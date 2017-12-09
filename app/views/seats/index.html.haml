@@ -4,6 +4,7 @@
   %thead
     %tr
       %th Concert
+      %th Theater
       %th Row
       %th Number
       %th Price
@@ -15,6 +16,7 @@
     - @seats.each do |seat|
       %tr
         %td= seat.concert.title
+        %td= seat.concert.theater.title
         %td= seat.row
         %td= seat.number
         %td= seat.price
@@ -24,4 +26,4 @@
 
 %br
 
-= link_to 'New Seat', new_seat_path
+//= link_to 'New Seat', new_seat_path

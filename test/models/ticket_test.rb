@@ -4,4 +4,6 @@ class TicketTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
+
+  #TODO: Ticket tests
 end

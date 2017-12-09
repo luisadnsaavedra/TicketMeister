@@ -1,0 +1,10 @@
+%link(rail='stylesheet' href='assets/stylesheets/seatMap.scss')
+//- @concert = concert
+%table
+  %tbody
+    -concert.seats.each do |seat|
+      %tr
+        %td= seat.row
+        %td= seat.number
+        %td= seat.price
+%p!= "&copy; #{t('app_title')} #{Time.now.year}"

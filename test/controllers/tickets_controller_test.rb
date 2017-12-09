@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class TicketsControllerTest < ActionController::TestCase
+  include Devise::Test::ControllerHelpers
+  
   setup do
     @ticket = tickets(:one)
   end

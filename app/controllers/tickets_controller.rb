@@ -1,5 +1,7 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  #restrict access to only registered users
+  before_action :authenticate_user!
 
   # GET /tickets
   # GET /tickets.json

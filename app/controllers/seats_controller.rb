@@ -1,7 +1,8 @@
 class SeatsController < ApplicationController
   before_action :set_seat, only: [:show, :edit, :update, :destroy]
   before_action :set_concert, only: [:new, :create]
-
+  before_action :authenticate_user!
+  
   # GET /seats
   # GET /seats.json
   def index
@@ -77,5 +78,5 @@ class SeatsController < ApplicationController
     def set_concert
       @concert = Concert.find_by(id: params[:concert_id]) || Concert.find(seat_params[:concert_id])
     end
-    
+
 end
