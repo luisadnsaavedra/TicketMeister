@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   #Method to redirect users to their tickets page after successful login
   def after_sign_in_path_for(resource)
-    seats_path
+    tickets_path
   end
 
   #Method to redirect users to the concerts list after successful logout

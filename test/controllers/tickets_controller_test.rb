@@ -2,6 +2,7 @@ require 'test_helper'
 
 class TicketsControllerTest < ActionController::TestCase
   include Devise::Test::ControllerHelpers
+  include Capybara::DSL
 
   setup do
     @ticket = tickets(:one)
@@ -51,4 +52,5 @@ class TicketsControllerTest < ActionController::TestCase
 
     assert_redirected_to tickets_path
   end
+
 end

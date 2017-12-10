@@ -124,7 +124,7 @@ class SeatsController < ApplicationController
     #source: https://stackoverflow.com/questions/5794695/devise-restricting-actions-to-administrators
     def verify_admin #TODO: change root_path to sign up/ login path
       if !current_user.present? || current_user.email != 'admin@ticketm.com'
-        redirect_to seats_path
+        redirect_to tickets_path
         #TODO: localise flash notice string
         flash[:notice] = "Log in as admin to change seats"
       end
