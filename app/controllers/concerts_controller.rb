@@ -1,5 +1,5 @@
 class ConcertsController < ApplicationController
-  before_filter :verify_admin, only: [:edit, :update, :destroy]
+  before_filter :verify_admin, only: [:new, :edit, :update, :destroy]
   before_action :set_concert, only: [:show, :edit, :update, :destroy]
   before_action :set_theater, only: [:new, :create]
   impressionist #impressionist gem code
@@ -83,10 +83,10 @@ class ConcertsController < ApplicationController
 
     #define a method to check whether the user is an admin before certain actions
     #source: https://stackoverflow.com/questions/5794695/devise-restricting-actions-to-administrators
-    def verify_admin #TODO: change root_path to sign up/ login path
+    def verify_admin
       if !current_user.present? || current_user.email != 'admin@ticketm.com'
         redirect_to concerts_path
-        #TODO: add a flash notice
+        flash[:notice] = "Log in as admin to change/ add / delete a theater"
       end
     end
 

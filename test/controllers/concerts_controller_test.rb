@@ -20,7 +20,13 @@ class ConcertsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:concerts)
   end
 
-  test "should get new" do
+  test "user should not get new" do
+    get :new, theater_id: @theater
+    assert_redirected_to concerts_path
+  end
+
+  test "admin should get new" do
+    sign_in @admin_user
     get :new, theater_id: @theater
     assert_response :success
   end

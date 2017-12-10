@@ -1,5 +1,5 @@
 class TheatersController < ApplicationController
-  before_filter :verify_admin, only: [:edit, :update, :destroy]
+  before_filter :verify_admin, only: [:new, :edit, :update, :destroy]
   before_action :set_theater, only: [:show, :edit, :update, :destroy]
 
   # GET /theaters
@@ -78,7 +78,7 @@ class TheatersController < ApplicationController
     def verify_admin #TODO: change root_path to sign up/ login path
       if !current_user.present? || current_user.email != 'admin@ticketm.com'
         redirect_to theaters_path
-        #TODO: add a flash notice
+        flash[:notice] = "Log in as admin to change/ add / delete a theater"
       end
     end
 
