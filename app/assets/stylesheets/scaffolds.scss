@@ -12,8 +12,14 @@ body {
 
 p, ol, ul, td {
   //font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+p {
+  //font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 20px;
+  line-height: 25px;
 }
 
 pre {
@@ -63,7 +69,7 @@ div {
     text-align: left;
     font-weight: bold;
     padding: 5px 5px 5px 15px;
-    font-size: 12px;
+    font-size: 15px;
     margin: -7px;
     margin-bottom: 0px;
     background-color: #c00;
@@ -73,5 +79,15 @@ div {
   ul li {
     font-size: 12px;
     list-style: square;
+  }
+}
+
+footer {
+  background-color: rgba(209, 188, 129, 1);
+  text-align: center;
+  text-indent: center;
+  p {
+    font-size: 15px;
+    line-height: 18px;
   }
 }
