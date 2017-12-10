@@ -1,28 +1,29 @@
 %h1=t('.title')
 %p=t('.intro')
 
-%h2 The most popular concerts
+%h2 The most popular concerts right now
 
 %table
   %thead
     %tr
+      %th Concert
       %th Theater
-      %th Title
-      %th
+      %th Tickets
       %th
       %th
 
   %tbody
-    %tr All concerts
-    - @concerts.each do |concert|
+    -# %tr All concerts
+    -# - @concerts.each do |concert|
+    -#   %tr
+    -#     %td= concert.theater.title
+    -#     %td= concert.title
+    -#     %td= link_to 'Show', concert
+    //sort the concerts by the most clicked and retrieve top 10 concerts
+    - Concert.order('concerts.impressions_count DESC').limit(10).each do |concert|
       %tr
-        %td= concert.theater.title
         %td= concert.title
-        %td= link_to 'Show', concert
-
-    %tr 3 most popular
-    - Concert.order('concerts.impressions_count DESC').limit(3).each do |concert|
-      %tr
         %td= concert.theater.title
-        %td= concert.title
-        %td= link_to 'Show', concert
+        //since we are setting the prices manually for all the concerts and all have the same prices
+        %td £10-£25
+        %td= link_to 'Buy tickets', concert

@@ -1,3 +1,9 @@
+$occupied: rgba(197, 197, 197, 1);
+$twenty_pounds: rgba(66, 88, 185, 1);
+$twentyfive_pounds: rgba(243, 152, 73, 1);
+$fifteen_pounds: rgba(132, 0, 128, 1);
+$ten_pounds: rgba(136, 91, 33, 1);
+
 table {
   border: 20px;
 }
@@ -11,19 +17,25 @@ body td {
 }
 
 .occupied {
-  background-color: red;
+  background-color: $occupied;
 }
 
 .available {
-  background-color: green;
-  &#F, &#L, &#M {
-    background-color: blue;
+  background-color: $ten_pounds;
+  &#A, &#B, &#C, &#D, &#E, &#M, &#N, &#O, &#P {
+    background-color: $twenty_pounds;
   }
 }
 
-#G, #H, #I {
+#F, #G, #H, #I, #J, #K, #L {
   &.available {
-    background-color: blue;
+    background-color: $twentyfive_pounds;
+  }
+}
+
+#Q, #R, #S, #T {
+  &.available {
+    background-color: $fifteen_pounds;
   }
 }
 

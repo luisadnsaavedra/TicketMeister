@@ -6,8 +6,18 @@ body {
   line-height: 18px;
 
   td, th {
-    padding: 5px;
+    padding: 20px;
+    font-size: 20px;
+    text-transform: capitalize;
   }
+
+  tr {
+    padding: 15px;
+  }
+}
+
+h1, h2 {
+  text-align: center;
 }
 
 p, ol, ul, td {

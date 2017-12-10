@@ -1,22 +1,18 @@
+%h1
+  %b= @concert.title
 %p
   %b Theater:
   = @concert.theater.title
 %p
-  %b Title:
-  = @concert.title
+  %b Description:
+  = @concert.theater.description
 
-%p Seat map:
+%h2 Seat Map
 %table
   %tbody
-    - @rows_test = ['A', 'B', 'C', 'D']
-    - @rows_test.each do |row|
-      %tr
-        %td= row
-        %td 1
-        %td 2
+
 = render 'seats/map.html.haml',  { concert: @concert }
 
-%p= link_to I18n.t('home.theaters.concerts.add_seat'), new_seat_path(concert_id: @concert)
-= link_to 'Edit', edit_concert_path(@concert)
-\|
+-# = link_to 'Edit', edit_concert_path(@concert)
+-# \|
 = link_to 'Back', concerts_path

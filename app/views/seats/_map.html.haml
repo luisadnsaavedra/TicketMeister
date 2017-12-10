@@ -1,16 +1,9 @@
 %link(rail='stylesheet' href='assets/stylesheets/seatMap.scss')
 - @seats = concert.seats
-//TODO: jQuery methods to help format the seats
-//:javascript
 
-%table
-  %tbody
-    - @seats.each do |seat|
-      %tr
-        %td= seat.row
-        %td= seat.number
-        %td= seat.price
+%ul
 
+%h1 Stage
 %table
   %tbody
     //Arrays with all the rows per theater and seats per row
@@ -23,24 +16,26 @@
       %tr
         %td= row
         - @numbers.each do |number|
-          //- @currentSeat = Seat.new
-          //- @currentSeat.concert= concert
-          //- @currentSeat.row= row
-          //- @currentSeat.number= number
-          //TODO: set price depending on row
-          //- @currentSeat.price= 0
-
+          //set price depending on row
+          - @price = 10
+          -case row
+            -when 'A', 'B', 'C', 'D', 'E'
+              -@price = 20
+            -when 'F', 'G', 'H', 'I', 'J', 'K', 'L'
+              -@price = 25
+            -when 'M', 'N', 'O', 'P'
+              -@price = 20
+            -when 'Q', 'R', 'S', 'T'
+              -@price = 15
           - @class= "available"
           - @seats.each do |seatc|
             -if seatc.row == row && seatc.number == number
               - @class= "occupied"
 
-          //current user and set a Seat object to create the Ticket
-
           %td{:class => "#{@class}", :id => row }
-            //  = link_to number, seat_path(concert_id: @concert.id, row: row, number: number, price: 15)
-            //- @seat= Seat.new
-            //= link_to number, tickets_path, :on_click => "post :create, seat: { seat: @seat.id concert_id: @concert.id, number: number, row: row, price: 15 }"
-            = link_to number, new_seat_path(:concert_id => @concert, :row => row, :number => number, :price => 15)
-            //new_seat_path(:concert_id => @concert, :row => row, :number => number, :price => 15)
-%h1 Stage
+            // if seat is occupied only set the number but not the link to create seat object and ticket
+            -if "#{@class}" == "occupied"
+              = number
+              //else set the link and allow the user to book the seat, creating a new ticket
+            -else
+              = link_to number, new_seat_path(:concert_id => @concert, :row => row, :number => number, :price => @price)
