@@ -4,6 +4,6 @@ one:
   theater: one
   title: MyString
 
-two:
-  theater: two
-  title: MyString
+#two:
+#  theater: two
+#  title: MyString

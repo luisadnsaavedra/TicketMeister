@@ -4,20 +4,28 @@
   %thead
     %tr
       %th User
-      %th Seat
-      %th
-      %th
-      %th
+      %th Concert
+      %th Theater
+      %th Row
+      %th Number
+      %th Price
 
   %tbody
     - @tickets.each do |ticket|
-      %tr
-        %td= ticket.user
-        %td= ticket.seat
-        %td= link_to 'Show', ticket
-        %td= link_to 'Edit', edit_ticket_path(ticket)
-        %td= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' }
+      - if ticket.user == current_user
+        %tr
+          %td= ticket.user.email
+          %td= link_to ticket.seat.concert.title
+          %td= ticket.seat.concert.theater.title
+          %td= ticket.seat.row
+          %td= ticket.seat.number
+          %td= ticket.seat.price
+          %td= link_to 'Details', ticket
+          //link to edit doesn't make sense, either details or cancel
+          //%td= link_to 'Edit', edit_ticket_path(ticket)
+          %td= link_to 'Return and refund', ticket, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 
-= link_to 'New Ticket', new_ticket_path
+//New ticket link doesn't make sense in our implementation
+//= link_to 'New Ticket', new_ticket_path

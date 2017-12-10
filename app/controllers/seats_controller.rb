@@ -1,4 +1,5 @@
 class SeatsController < ApplicationController
+  before_filter :verify_admin, only: [:show, :edit, :update, :destroy]
   before_action :set_seat, only: [:show, :edit, :update, :destroy]
   before_action :set_concert, only: [:new, :create]
   before_action :authenticate_user!
@@ -118,4 +119,15 @@ class SeatsController < ApplicationController
     def set_concert
       @concert = Concert.find_by(id: params[:concert_id]) || Concert.find(seat_params[:concert_id])
     end
+
+    #define a method to check whether the user is an admin before certain actions
+    #source: https://stackoverflow.com/questions/5794695/devise-restricting-actions-to-administrators
+    def verify_admin #TODO: change root_path to sign up/ login path
+      if !current_user.present? || current_user.email != 'admin@ticketm.com'
+        redirect_to seats_path
+        #TODO: localise flash notice string
+        flash[:notice] = "Log in as admin to change seats"
+      end
+    end
+
 end

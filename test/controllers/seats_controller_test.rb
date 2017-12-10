@@ -9,7 +9,7 @@ class SeatsControllerTest < ActionController::TestCase
     @seat = seats(:one)
     @concert = concerts(:one)
     #seat view requires a logged in user
-    @user = users(:one)
+    @user = users(:admin)
     sign_in @user
   end
 
@@ -30,8 +30,12 @@ class SeatsControllerTest < ActionController::TestCase
       #  post :create, seat: { concert_id: @seat.concert.id, number: @seat.number, price: @seat.price, row: @seat.row }
 
       #Using the Capybara gem:
-      visit(new_seat_path(concert_id: @seat.concert.id, row: @seat.row, number: @seat.number, price: @seat.price))
-      click_on 'Confirm'
+      visit '/concerts'
+      click_on 'Show'
+      #visit(new_seat_path(concert_id: @seat.concert.id, row: @seat.row, number: @seat.number, price: @seat.price))
+      first(:link, 1).click
+      visit(new_seat_path(concert_id: @seat.concert.id, row: 'A', number: 1, price: 15))
+      click_on('Confirm')
     end
 
     assert_redirected_to ticket_path(assigns(:ticket))
@@ -39,7 +43,10 @@ class SeatsControllerTest < ActionController::TestCase
 
   test "should create ticket" do
     assert_difference('Ticket.count') do
-      post :create, seat: { concert_id: @seat.concert.id, row: @seat.row, number: @seat.number, price: @seat.price }
+      # post :create, seat: { concert_id: @seat.concert.id, row: @seat.row, number: @seat.number, price: @seat.price }
+      first(:link, 1).click
+      visit(new_seat_path(concert_id: @seat.concert.id, row: 'A', number: 1, price: 15))
+      click_on('Confirm')
     end
 
     assert_redirected_to ticket_path(assigns(:ticket))
