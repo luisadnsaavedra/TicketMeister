@@ -1,5 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  before_filter :verify_admin, only: [:new]
   #restrict access to only registered users
   before_action :authenticate_user!
 
@@ -72,5 +73,11 @@ class TicketsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def ticket_params
       params.require(:ticket).permit(:user_id, :seat_id)
+    end
+
+    def verify_admin 
+      if !current_user.present? || current_user.email != 'admin@ticketm.com'
+        redirect_to tickets_path
+      end
     end
 end

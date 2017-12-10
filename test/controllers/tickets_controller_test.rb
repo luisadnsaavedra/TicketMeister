@@ -6,8 +6,8 @@ class TicketsControllerTest < ActionController::TestCase
 
   setup do
     @ticket = tickets(:one)
-    #tickets require a logged in user
-    @user = users(:one)
+    #tickets require a logged in user (admin for some of the options)
+    @user = users(:admin)
     sign_in @user
   end
 
