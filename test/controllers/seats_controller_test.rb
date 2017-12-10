@@ -3,6 +3,7 @@ require 'test_helper'
 class SeatsControllerTest < ActionController::TestCase
 
   include Devise::Test::ControllerHelpers
+  include Capybara::DSL
 
   setup do
     @seat = seats(:one)
@@ -25,10 +26,23 @@ class SeatsControllerTest < ActionController::TestCase
 
   test "should create seat" do
     assert_difference('Seat.count') do
-      post :create, seat: { concert_id: @seat.concert_id, number: @seat.number, price: @seat.price, row: @seat.row }
+      # Requires a change due to way the form now operates
+      #  post :create, seat: { concert_id: @seat.concert.id, number: @seat.number, price: @seat.price, row: @seat.row }
+
+      #Using the Capybara gem:
+      visit(new_seat_path(concert_id: @seat.concert.id, row: @seat.row, number: @seat.number, price: @seat.price))
+      click_on 'Confirm'
     end
 
-    assert_redirected_to seat_path(assigns(:seat))
+    assert_redirected_to ticket_path(assigns(:ticket))
+  end
+
+  test "should create ticket" do
+    assert_difference('Ticket.count') do
+      post :create, seat: { concert_id: @seat.concert.id, row: @seat.row, number: @seat.number, price: @seat.price }
+    end
+
+    assert_redirected_to ticket_path(assigns(:ticket))
   end
 
   test "should show seat" do
@@ -42,7 +56,7 @@ class SeatsControllerTest < ActionController::TestCase
   end
 
   test "should update seat" do
-    patch :update, id: @seat, seat: { concert_id: @seat.concert_id, number: @seat.number, price: @seat.price, row: @seat.row }
+    patch :update, id: @seat, seat: { concert_id: @concert, number: @seat.number, price: @seat.price, row: @seat.row }
     assert_redirected_to seat_path(assigns(:seat))
   end
 

@@ -39,6 +39,10 @@ group :development, :test do
 
   # Add 'rake' for Travis CI tests
   gem 'rake'
+
+  # Used to test the seats form/ confirmation screen
+  gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 group :development do

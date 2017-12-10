@@ -48,6 +48,36 @@ class SeatsController < ApplicationController
       end
     end
   end
+    # respond_to do |format|
+    #   if @ticket.save
+    #     flash[:success] = "Seat was successfully booked and new ticket added to your account."
+    #     redirect_to @ticket
+    #     return
+    #     #format.html { redirect_to @ticket, notice: 'Seat was successfully booked and new ticket added to your account.' }
+    #     format.json { render :show, status: :created, location: @ticket }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @ticket.errors, status: :unprocessable_entity }
+    #   end
+    # end
+      # if @seat.save
+      #   #save a new Ticket as a result
+      #   @ticket = Ticket.new
+      #   @ticket.user = current_user
+      #   @ticket.seat = @seat
+      #   respond_to do |format|
+      #     if @ticket.save
+      #       #TODO: change @seat to @ticket
+      #       format.html { redirect_to @ticket, notice: 'Seat was successfully booked and new ticket added to your account.' }
+      #       format.json { render :show, status: :created, location: @ticket }
+      #     else
+      #       format.html { render :new }
+      #       format.json { render json: @ticket.errors, status: :unprocessable_entity }
+      #     end
+      #   end
+      # else
+      #   format.html { render :new }
+      #   format.json { render json: @seat.errors, status: :unprocessable_entity }
 
   # PATCH/PUT /seats/1
   # PATCH/PUT /seats/1.json
