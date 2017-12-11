@@ -1,11 +1,23 @@
 == README
 
+This is a basic Ruby on Rails application with functionality to set different theaters and concerts,
+and for users to book seats for the concerts. It is obviously missing some functionality e.g. a payment system.
+
 A series of assumptions have been made in this application for conveniency:
 
-* An administrator user, with more permissions than the normal user has, can be created (Sign Up) with any password but the email **must be** __I18n.t('general.admin_email')__
+* An administrator user, with more permissions than the normal user has, can be created (Sign Up) with any password but the email **must be** __admin@ticketm.com__
 
-* In order to register new Theaters and Concerts in the system,
-Also, for conveniency all theaters are
+* In order to register new Theaters and Concerts in the system, the user must sign in/ up with the administrator email
+
+* Also, for conveniency all theaters are supposed to have:
+  * The same number of rows A-Z
+  * 30 seats per row
+  * The prices of the seats is different depending on the row
+
+* For testing purposes, the code has been uploaded to this private (now public) GitHub repository: https://github.com/luisadnsaavedra/TicketMeister
+
+* Also, it has been tested externally using Travis CI source: https://travis-ci.com as can be seen under the commits tag (green ticks mean the specific commit passed the Travis tests)
+
 
 
 
