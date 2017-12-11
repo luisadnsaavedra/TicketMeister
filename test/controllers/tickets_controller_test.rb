@@ -42,6 +42,16 @@ class TicketsControllerTest < ActionController::TestCase
   test "should show ticket" do
     get :show, id: @ticket
     assert_response :success
+
+    assert_template layout: 'application'
+
+    assert_select 'title', 'TicketMeister'
+    assert_select 'p', "User:\n#{@ticket.user.email}"
+    assert_select 'p', "Concert:\n#{@ticket.seat.concert.title} in #{@ticket.seat.concert.theater.title}"
+    assert_select 'p', "#{@ticket.seat.concert.theater.title}:\n#{@ticket.seat.concert.theater.description}"
+    assert_select 'p', "Seat:\n#{@ticket.seat.row}#{@ticket.seat.number}"
+    assert_select 'p', "Price:\n£#{@ticket.seat.price}"
+    assert_select 'a', 'Back'
   end
 
   test "should get edit" do
