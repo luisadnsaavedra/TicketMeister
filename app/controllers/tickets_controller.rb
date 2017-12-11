@@ -76,7 +76,7 @@ class TicketsController < ApplicationController
     end
 
     def verify_admin
-      if !current_user.present? || current_user.email != 'admin@ticketm.com'
+      if !current_user.present? || current_user.email != I18n.t('general.admin_email')
         redirect_to tickets_path
       end
     end

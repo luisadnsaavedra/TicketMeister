@@ -23,6 +23,8 @@ en:
   app_title: TicketMeister
   app_description: A place to find and purchase tickets to all the music related events happening in your area.
 
+  general:
+    admin_email: admin@ticketm.com
   home:
     home:
       title: TicketMeister

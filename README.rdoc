@@ -2,7 +2,7 @@
 
 A series of assumptions have been made in this application for conveniency:
 
-* An administrator user, with more permissions than the normal user has, can be created (Sign Up) with any password but the email **must be** __admin@ticketm.com__
+* An administrator user, with more permissions than the normal user has, can be created (Sign Up) with any password but the email **must be** __I18n.t('general.admin_email')__
 
 * In order to register new Theaters and Concerts in the system,
 Also, for conveniency all theaters are

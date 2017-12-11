@@ -76,7 +76,7 @@ class TheatersController < ApplicationController
     #define a method to check whether the user is an admin before certain actions
     #source: https://stackoverflow.com/questions/5794695/devise-restricting-actions-to-administrators
     def verify_admin #TODO: change root_path to sign up/ login path
-      if !current_user.present? || current_user.email != 'admin@ticketm.com'
+      if !current_user.present? || current_user.email != I18n.t('general.admin_email')
         redirect_to theaters_path
         flash[:notice] = "Log in as admin to change/ add / delete a theater"
       end
