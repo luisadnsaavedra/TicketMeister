@@ -18,7 +18,7 @@
   = "#{@ticket.seat.row}#{@ticket.seat.number}"
 %p
   %b Price:
-  = @ticket.seat.price
+  = "£#{@ticket.seat.price}"
 
 
 //Link to edit does not make sense in the real world case, however from the tickets view the user can cancel the ticket

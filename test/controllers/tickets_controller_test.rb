@@ -15,6 +15,15 @@ class TicketsControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:tickets)
+
+    assert_template layout: 'application'
+
+    assert_select 'title', 'TicketMeister'
+    assert_select 'h1', 'Listing Tickets'
+    assert_select 'th', 'Concert'
+    assert_select 'th', 'Theater'
+    assert_select 'th', 'Row'
+    assert_select 'th', 'Number'
   end
 
   test "should get new" do

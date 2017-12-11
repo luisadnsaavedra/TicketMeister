@@ -17,6 +17,14 @@ class TheatersControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:theaters)
+
+    assert_template layout: 'application'
+
+    assert_select 'title', 'TicketMeister'
+    assert_select 'h1', 'Listing Theaters'
+    assert_select 'th', 'Title'
+    assert_select 'th', 'Description'
+    assert_select 'a', 'Add a New Theater'
   end
 
   test "user should not get new" do
@@ -41,6 +49,14 @@ class TheatersControllerTest < ActionController::TestCase
   test "should show theater" do
     get :show, id: @theater
     assert_response :success
+
+    assert_template layout: 'application'
+
+    assert_select 'title', 'TicketMeister'
+    assert_select 'p', "Title:\n#{@theater.title}"
+    assert_select 'p', "Description:\n#{@theater.description}"
+    assert_select 'p', "Concerts and Events:"
+    assert_select 'a', 'Add a Concert or Event'
   end
 
   test "user should not get edit" do

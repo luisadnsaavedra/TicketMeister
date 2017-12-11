@@ -52,7 +52,13 @@ en:
       no_email: You must supply an email address for us to contact you.
       email_sent: Thanks for contacting us. We will come back to you shortly.
 
-    theaters:
+
+  theaters:
+    index:
+      add_theater: Add a New Theater
+      theater_list: Listing Theaters
+    show:
+      theater_concerts: "Concerts and Events:"
       add_concert: Add a Concert or Event
 
   seats:
@@ -72,3 +78,7 @@ en:
   tickets:
     destroy:
       returned: 'Ticket was successfully returned and you should be refunded within 2-3 business days.'
+    index:
+      ticket_list: Listing Tickets
+      return_refund: Return and Refund
+      details: Details

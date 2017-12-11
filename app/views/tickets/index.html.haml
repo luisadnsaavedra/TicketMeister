@@ -1,4 +1,4 @@
-%h1 Listing tickets
+%h1=t('.ticket_list')
 
 %table
   %thead
@@ -22,10 +22,10 @@
           %td= ticket.seat.row
           %td= ticket.seat.number
           //%td= ticket.seat.price
-          %td= link_to 'Details', ticket
+          %td= link_to t('.details'), ticket
           //link to edit doesn't make sense, either details or cancel
           //%td= link_to 'Edit', edit_ticket_path(ticket)
-          %td= link_to 'Return and refund', ticket, method: :delete, data: { confirm: 'Are you sure?' }
+          %td= link_to t('.return_refund'), ticket, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 

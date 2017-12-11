@@ -1,4 +1,4 @@
-%h1 Listing theaters
+%h1=t('.theater_list')
 
 %table
   %thead
@@ -20,4 +20,4 @@
 
 %br
 
-= link_to 'New Theater', new_theater_path
+= link_to t('.add_theater'), new_theater_path
