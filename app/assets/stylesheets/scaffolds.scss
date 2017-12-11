@@ -1,6 +1,8 @@
+$background: rgba(226, 192, 141, 1);
+
 body {
-  background-color: #fff;
-  color: #333;
+  background-color: $background;
+  color: $background;
   //font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;

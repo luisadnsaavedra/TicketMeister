@@ -3,23 +3,25 @@
 %table
   %thead
     %tr
-      %th User
+      //%th User all tickets shown are from the current user, uncomment to check
       %th Concert
       %th Theater
       %th Row
       %th Number
-      %th Price
+      //%th Price In the detailed view instead
 
   %tbody
     - @tickets.each do |ticket|
       - if ticket.user == current_user
         %tr
-          %td= ticket.user.email
-          %td= link_to ticket.seat.concert.title
-          %td= ticket.seat.concert.theater.title
+          //%td= ticket.user.email
+          //link to the concert
+          %td= link_to ticket.seat.concert.title, ticket.seat.concert
+          //link to the theater holding the event
+          %td= link_to ticket.seat.concert.theater.title, ticket.seat.concert.theater
           %td= ticket.seat.row
           %td= ticket.seat.number
-          %td= ticket.seat.price
+          //%td= ticket.seat.price
           %td= link_to 'Details', ticket
           //link to edit doesn't make sense, either details or cancel
           //%td= link_to 'Edit', edit_ticket_path(ticket)

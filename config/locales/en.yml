@@ -55,6 +55,8 @@ en:
   seats:
     create:
       successful: 'Seat was successfully booked and ticket added to your tickets section.'
+    new:
+      confirm_purchase: "Confirm Purchase"
 
   tickets:
     destroy:

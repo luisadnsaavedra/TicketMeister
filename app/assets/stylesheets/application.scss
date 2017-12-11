@@ -19,12 +19,18 @@
 
 $font: 'Times New Roman', 'Times', serif;
 $color: #FFFFFF;
+$background: rgba(226, 192, 141, 0.25);
 
 body {
   font-family: $font;
-  background-color: $color;
+  background-color: $background;
   margin: 10px;
   padding: 10px;
+  align: center;
+
+  table {
+    align: center;
+  }
 }
 
 h1 {

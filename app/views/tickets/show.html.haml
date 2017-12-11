@@ -1,10 +1,15 @@
 %p
   %b User:
-  = @ticket.user
+  = @ticket.user.email
 %p
   %b Seat:
-  = @ticket.seat
+  = @ticket.seat.row + "#{@ticket.seat.number}"
+%p
+  %b Price:
+  = @ticket.seat.price
 
-= link_to 'Edit', edit_ticket_path(@ticket)
-\|
+
+//Link to edit does not make sense in the real world case, however from the tickets view the user can cancel the ticket
+//= link_to 'Edit', edit_ticket_path(@ticket)
+//\|
 = link_to 'Back', tickets_path
