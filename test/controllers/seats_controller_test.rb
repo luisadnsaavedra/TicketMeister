@@ -33,6 +33,16 @@ class SeatsControllerTest < ActionController::TestCase
   test "should get new" do
     get :new, concert_id: @concert
     assert_response :success
+
+    assert_template layout: 'application'
+
+    assert_select 'title', 'TicketMeister'
+    assert_select 'h1', 'Buy Ticket'
+    assert_select 'label', 'Concert'
+    assert_select 'p', "#{@concert.title} in #{@concert.theater.title}."
+    assert_select 'label', 'Row'
+    assert_select 'label', 'Number'
+    assert_select 'label', 'Price'
   end
 
   # test "should create seat" do
@@ -43,10 +53,8 @@ class SeatsControllerTest < ActionController::TestCase
   #     #Using the Capybara gem:
   #     visit '/concerts'
   #     click_on 'Show'
-  #     #visit(new_seat_path(concert_id: @seat.concert.id, row: @seat.row, number: @seat.number, price: @seat.price))
-  #     first(:link, 1).click
-  #     visit(new_seat_path(concert_id: @seat.concert.id, row: 'A', number: 1, price: 15))
-  #     click_on('Confirm') #Capybara can't find 'Confirm' button in the form, which makes this test fail
+  #     #visit(new_seat_path(concert_id: @seat.concert.id, row: 'A', number: 1, price: 15))
+  #     click_on('submit')#Capybara can't find 'Confirm' button in the form, which makes this test fail
   #   end
   #
   #   assert_redirected_to ticket_path(assigns(:ticket))
