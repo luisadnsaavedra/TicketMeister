@@ -5,7 +5,7 @@ and for users to book seats for the concerts. It is obviously missing some funct
 
 A series of assumptions have been made in this application for conveniency:
 
-* An administrator user, with more permissions than the normal user has, can be created (Sign Up) with any password but the email **must be** __admin@ticketm.com__
+* An administrator user, with more permissions than the normal user has, can be created (Sign Up) with any password but the email must be admin@ticketm.com
 
 * In order to register new Theaters and Concerts in the system, the user must sign in/ up with the administrator email
 
