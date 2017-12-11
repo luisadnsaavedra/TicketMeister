@@ -3,7 +3,7 @@
   = @ticket.user.email
 %p
   %b Seat:
-  = @ticket.seat.row + "#{@ticket.seat.number}"
+  = "#{@ticket.seat.row}#{@ticket.seat.number}"
 %p
   %b Price:
   = @ticket.seat.price

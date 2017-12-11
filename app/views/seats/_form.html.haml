@@ -22,7 +22,7 @@
     //= f.number_field :number
   .field
     = f.label :price
-    %p= "£" + params[:price]
+    %p= "   £#{params[:price]}"
     = f.hidden_field :price, value: params[:price]
     //= f.text_field :price
   .actions
