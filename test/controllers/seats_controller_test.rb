@@ -16,6 +16,17 @@ class SeatsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
+
+    assert_template layout: 'application'
+
+    assert_select 'title', 'TicketMeister'
+    assert_select 'h1', 'Listing Booked Seats'
+    assert_select 'p', 'Visit the "My Tickets" section to view the seats you have booked.'
+    assert_select 'th', 'Concert'
+    assert_select 'th', 'Theater'
+    assert_select 'th', 'Row'
+    assert_select 'th', 'Number'
+    assert_select 'th', 'Price'
     assert_not_nil assigns(:seats)
   end
 

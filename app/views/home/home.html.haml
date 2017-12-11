@@ -1,7 +1,7 @@
 %h1=t('.title')
 %p=t('.intro')
 
-%h2 The most popular concerts right now
+%h2=t('.popular_concerts')
 
 %table
   %thead
@@ -25,4 +25,4 @@
         %td= concert.theater.title
         //since we are setting the prices manually for all the concerts and all have the same prices
         %td £10-£25
-        %td= link_to 'Buy tickets', concert
+        %td= link_to t('.buy'), concert

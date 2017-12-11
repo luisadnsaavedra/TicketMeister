@@ -3,7 +3,7 @@ require 'test_helper'
 class HomeControllerTest < ActionController::TestCase
 
   include Devise::Test::ControllerHelpers
-  
+
   test "should get home" do
     get :home
     assert_response :success
@@ -13,6 +13,7 @@ class HomeControllerTest < ActionController::TestCase
     assert_select 'title', 'TicketMeister'
     assert_select 'h1', 'TicketMeister'
     assert_select 'p', 'Here you can find and purchase tickets to all the music related events happening near you.'
+    assert_select 'h2', 'The most popular concerts right now'
   end
 
   test "should get contact" do

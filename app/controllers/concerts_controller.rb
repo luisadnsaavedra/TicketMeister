@@ -86,7 +86,7 @@ class ConcertsController < ApplicationController
     def verify_admin
       if !current_user.present? || current_user.email != I18n.t('general.admin_email')
         redirect_to concerts_path
-        flash[:notice] = "Log in as admin to change/ add / delete a theater"
+        flash[:notice] = I18n.t('general.log_as_admin')
       end
     end
 

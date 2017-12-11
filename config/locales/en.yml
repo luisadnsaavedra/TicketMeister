@@ -25,10 +25,13 @@ en:
 
   general:
     admin_email: admin@ticketm.com
+    log_as_admin: Log in as admin to change, add or delete data
   home:
     home:
       title: TicketMeister
       intro: Here you can find and purchase tickets to all the music related events happening near you.
+      popular_concerts: The most popular concerts right now
+      buy: Buy Tickets
 
     contact:
       title: Contact Us
@@ -50,13 +53,21 @@ en:
       email_sent: Thanks for contacting us. We will come back to you shortly.
 
     theaters:
-      add_concert: 'Add a Concert or Event'
+      add_concert: Add a Concert or Event
 
   seats:
     create:
-      successful: 'Seat was successfully booked and ticket added to your tickets section.'
+      successful: Seat was successfully booked and ticket added to your tickets section.
     new:
-      confirm_purchase: "Confirm Purchase"
+      confirm_purchase: Confirm Purchase
+    index:
+      booked_seats: Listing Booked Seats
+      visit_my_tickets: Visit the "My Tickets" section to view the seats you have booked.
+
+  concerts:
+    index:
+      concert_list: Listing Concerts
+      add_options: More concerts can be added in a specific theater
 
   tickets:
     destroy:

@@ -8,7 +8,7 @@
 
   .field
     = f.label :concert
-    %p= @seat.concert.title
+    %p= "#{@seat.concert.title} in #{@seat.concert.theater.title}."
     = f.hidden_field :concert_id, value: @seat.concert.id
   .field
     = f.label :row

@@ -1,24 +1,25 @@
-%h1 Listing concerts
+%h1=t('.concert_list')
 
 %table
   %thead
     %tr
+      %th Event Title
       %th Theater
-      %th Title
-      %th
+      %th Prices
       %th
       %th
 
   %tbody
     - @concerts.each do |concert|
       %tr
-        %td= concert.theater.title
         %td= concert.title
+        %td= concert.theater.title
+        %td £10-£25
         %td= link_to 'Show', concert
         %td= link_to 'Edit', edit_concert_path(concert)
         %td= link_to 'Destroy', concert, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 
-%p More concerts can be added in a specific theater
+%p=t('.add_options')
 //= link_to 'New Concert', new_concert_path

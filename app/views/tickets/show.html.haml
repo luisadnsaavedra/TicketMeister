@@ -1,6 +1,18 @@
+//set variables for commodity
+- @concert = @ticket.seat.concert
+- @theater = @concert.theater
 %p
   %b User:
   = @ticket.user.email
+
+%p
+  %b Concert:
+  = "#{@concert.title} in #{@theater.title}"
+
+%p
+  %b #{@theater.title}:
+  = @theater.description
+
 %p
   %b Seat:
   = "#{@ticket.seat.row}#{@ticket.seat.number}"

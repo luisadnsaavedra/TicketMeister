@@ -96,7 +96,7 @@ class SeatsController < ApplicationController
       if !current_user.present? || current_user.email != I18n.t('general.admin_email')
         redirect_to tickets_path
         #TODO: localise flash notice string
-        flash[:notice] = "Log in as admin to change seats"
+        flash[:notice] = I18n.t('general.log_as_admin')
       end
     end
 
