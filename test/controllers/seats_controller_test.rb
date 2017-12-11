@@ -35,7 +35,7 @@ class SeatsControllerTest < ActionController::TestCase
   #     #visit(new_seat_path(concert_id: @seat.concert.id, row: @seat.row, number: @seat.number, price: @seat.price))
   #     first(:link, 1).click
   #     visit(new_seat_path(concert_id: @seat.concert.id, row: 'A', number: 1, price: 15))
-  #     click_on('Confirm')
+  #     click_on('Confirm') #Capybara can't find 'Confirm' button in the form, which makes this test fail
   #   end
   #
   #   assert_redirected_to ticket_path(assigns(:ticket))

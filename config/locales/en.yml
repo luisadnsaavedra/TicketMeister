@@ -47,5 +47,13 @@ en:
       no_email: You must supply an email address for us to contact you.
       email_sent: Thanks for contacting us. We will come back to you shortly.
 
-    theaters:
-      add_concert: 'Add a Concert or Event'
+  theaters:
+    add_concert: 'Add a Concert or Event'
+
+  seats:
+    create:
+      successful: 'Seat was successfully booked and ticket added to your tickets section.'
+
+  tickets:
+    destroy:
+      returned: 'Ticket was successfully returned and you should be refunded within 2-3 business days.'

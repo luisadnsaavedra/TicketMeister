@@ -6,5 +6,5 @@ class Seat < ActiveRecord::Base
   validates :number, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 30, message: "Specify a seat number between 1 and 30"}
 
   validates_uniqueness_of :number, :scope => [:concert, :row]
-  has_many :tickets
+  has_many :tickets, dependent: :destroy #cancel tickets if the seat is destroyed as a result of an admin removing them or a concert being cancelled
 end

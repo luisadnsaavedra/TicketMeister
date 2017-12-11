@@ -59,7 +59,7 @@ class TicketsController < ApplicationController
   def destroy
     @ticket.destroy
     respond_to do |format|
-      format.html { redirect_to tickets_url, notice: 'Ticket was successfully destroyed.' }
+      format.html { redirect_to tickets_url, notice: t('.returned') }
       format.json { head :no_content }
     end
   end
@@ -75,7 +75,7 @@ class TicketsController < ApplicationController
       params.require(:ticket).permit(:user_id, :seat_id)
     end
 
-    def verify_admin 
+    def verify_admin
       if !current_user.present? || current_user.email != 'admin@ticketm.com'
         redirect_to tickets_path
       end
